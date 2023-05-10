@@ -1,0 +1,18 @@
+.register-page,
+.login-page {
+  display: flex;
+  width: 850px;
+  min-height: 500px;
+  .padding {
+    padding: 30px;
+  }
+  .padding-row {
+    padding-bottom: 10px;
+  }
+  .auth-title {
+    font-size: 2em;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
