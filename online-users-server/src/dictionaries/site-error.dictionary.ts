@@ -4,12 +4,12 @@ export interface ISiteError {
 }
 
 export const SiteErrorDictionary = {
-  IDIOT: {
-    Code: 123,
-    Message: 'you are an idiot',
+  EMAIL_EXISTS: {
+    Code: 101,
+    Message: 'Email is already exists',
   },
-  IDIOT235235: {
-    Code: 123,
-    Message: 'you are an idiot',
+  REGISTER_Fill_ALL_FIELDS: {
+    Code: 102,
+    Message: 'FILL ALL FIELDS',
   },
 } satisfies Record<string, ISiteError>;
