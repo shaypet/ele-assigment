@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable()
-export class TransformInterceptor<T>
+export class ServerResponseInterceptor<T>
   implements NestInterceptor<T, ServerResponse<T>>
 {
   intercept(
