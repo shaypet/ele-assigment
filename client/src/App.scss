@@ -6,22 +6,22 @@
       color: black;
     }
   }
-}
-.center {
-  text-align: center;
-}
-.flex {
-  display: flex;
-}
-.big-text {
-  font-size: 1.3em;
-}
-.flex-column {
-  flex-direction: column;
-}
-.flex-center {
-  align-items: center;
-}
-.flex-center-valign {
-  justify-content: center;
+  .center {
+    text-align: center;
+  }
+  .flex {
+    display: flex;
+  }
+  .big-text {
+    font-size: 1.3em;
+  }
+  .flex-column {
+    flex-direction: column;
+  }
+  .flex-center {
+    align-items: center;
+  }
+  .flex-center-valign {
+    justify-content: center;
+  }
 }
