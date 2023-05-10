@@ -5,4 +5,19 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+  .auth-box {
+    min-width: 70vh;
+    min-height: 50vh;
+    background: #ffffff;
+    display: flex;
+    .start-align-side {
+      width: 50%;
+    }
+    .end-align-side {
+      width: 50%;
+    }
+    .all {
+      width: 100%;
+    }
+  }
 }
