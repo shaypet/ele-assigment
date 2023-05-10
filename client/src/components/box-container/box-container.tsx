@@ -1,8 +1,8 @@
 import "./box-container.scss";
-interface BoxContainerProps {
+type BoxContainerProps = {
   addTocClassName?: string;
   children: React.ReactNode;
-}
+};
 const BoxContainer = ({
   addTocClassName,
   children,
