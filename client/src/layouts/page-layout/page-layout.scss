@@ -1,0 +1,27 @@
+.app-page-container {
+  min-height: 100vh;
+  background: linear-gradient(45deg, #665fee 0%, #27c2de 100%);
+  display: flex;
+  justify-content: center;
+  &-body {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    background-color: white;
+    .header {
+      padding: 30px;
+      background-color: white;
+      border-bottom: 3px black solid;
+    }
+    .menu-bar {
+      background-color: white;
+      border-bottom: 3px black solid;
+    }
+    .page-content {
+      flex: 1 1 auto;
+    }
+    .footer {
+      border-top: 2px black solid;
+    }
+  }
+}
