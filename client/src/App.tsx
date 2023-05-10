@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { RouterProvider } from "react-router-dom";
-import HomePage from "./pages/home/home";
 import AppRoutes from "./routes/routes";
 import "./App.scss";
 import StoreContext from "./store/store";
