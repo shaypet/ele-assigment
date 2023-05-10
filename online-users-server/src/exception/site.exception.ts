@@ -1,4 +1,4 @@
-import { ISiteError } from 'src/site-error.dictionary';
+import { ISiteError } from 'src/dictionaries/site-error.dictionary';
 
 interface SiteException {
   name: string;
