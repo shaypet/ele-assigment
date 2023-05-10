@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Store } from "../types/store";
+import { Store } from "../types/store.type";
 
 const defaultStore: Store = {
   isAuth: [false, () => {}],

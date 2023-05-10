@@ -5,7 +5,7 @@ import HomePage from "./pages/home/home";
 import AppRoutes from "./routes/routes";
 import "./App.scss";
 import StoreContext from "./store/store";
-import { Store } from "./types/store";
+import { Store } from "./types/store.type";
 function App() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [user, setUser] = useState<string>("moshe");
