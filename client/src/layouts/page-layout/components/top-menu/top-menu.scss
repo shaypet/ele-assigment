@@ -1,0 +1,16 @@
+.top-menu {
+  display: flex;
+  padding: 0px 20px;
+  .menu-item {
+    a {
+      display: block;
+      padding: 0px 15px;
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
+  .spacer {
+    margin: auto;
+  }
+}
