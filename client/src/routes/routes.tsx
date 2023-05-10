@@ -5,6 +5,7 @@ import RegisterPage from "../pages/auth/register";
 import LoginPage from "../pages/auth/login";
 import HomePage from "../pages/home/home";
 import OnlineUsers from "../pages/online-users/online-users";
+import OnlineUserPopup from "../pages/online-users/components/online-user-popup/online-user-popup";
 const AppRoutes = createBrowserRouter([
   {
     path: "/auth",
@@ -35,6 +36,12 @@ const AppRoutes = createBrowserRouter([
       {
         path: "online-users",
         element: <OnlineUsers />,
+        children: [
+          {
+            path: ":userId",
+            element: <OnlineUserPopup />,
+          },
+        ],
       },
     ],
   },

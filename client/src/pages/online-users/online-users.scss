@@ -1,0 +1,10 @@
+.online-users-tyable {
+  margin: auto;
+  width: 60%;
+  tbody tr:nth-child(odd) {
+    background-color: #b2b2b2;
+  }
+  tbody tr:nth-child(even) {
+    background-color: rgb(119, 119, 119);
+  }
+}
