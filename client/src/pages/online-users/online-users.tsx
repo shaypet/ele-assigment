@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./online-users.scss";
 import { OnlineUserDTO } from "../../dto/online-user.dto";
 import OnlineUser from "./components/online-user";
@@ -31,8 +31,16 @@ const OnlineUsers = () => {
     <div className="online-users-page">
       <Outlet />
       <div className="online-users-container">
-        <div className="online-users-lastupdate"></div>
-        <table className="online-users-tyable" cellPadding={0} cellSpacing={0}>
+        <div className="online-users-header">
+          <div className="online-users-header-title">Online Users</div>
+          <div className="spacer"></div>
+          <div>
+            Last Updated:
+            <br />
+            {"asd"}
+          </div>
+        </div>
+        <table className="online-users-table" cellPadding={0} cellSpacing={0}>
           <thead>
             <tr>
               <th>Username</th>

@@ -1,4 +1,4 @@
-.online-users-tyable {
+.online-users-table {
   margin: auto;
   width: 60%;
   tbody tr:nth-child(odd) {
@@ -7,4 +7,8 @@
   tbody tr:nth-child(even) {
     background-color: rgb(119, 119, 119);
   }
+}
+.online-users-header {
+  display: flex;
+  padding: 10px 30px;
 }

@@ -26,5 +26,11 @@
     height: 40%;
     z-index: 502;
     position: relative;
+
+    button {
+      background: inherit;
+      border: 0px;
+      cursor: pointer;
+    }
   }
 }
