@@ -6,7 +6,7 @@ import "./App.scss";
 import StoreContext from "./store/store";
 import { Store } from "./types/store.type";
 function App() {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [isAuth, setIsAuth] = useState<boolean>(true);
   const [user, setUser] = useState<string>("moshe");
 
   const store: Store = {

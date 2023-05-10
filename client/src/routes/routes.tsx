@@ -6,6 +6,9 @@ import LoginPage from "../pages/auth/login";
 import HomePage from "../pages/home/home";
 import OnlineUsers from "../pages/online-users/online-users";
 import OnlineUserPopup from "../pages/online-users/components/online-user-popup/online-user-popup";
+import ProtectedRoute from "../components/protected-rout/protected-route";
+import Page404 from "../pages/page-404/page-404";
+import UnAuthPageRedirect from "../pages/page-unauth-redirect/page-unauth-redirect";
 const AppRoutes = createBrowserRouter([
   {
     path: "/auth",
@@ -19,6 +22,10 @@ const AppRoutes = createBrowserRouter([
         path: "login",
         element: <LoginPage />,
       },
+      {
+        path: "unauth",
+        element: <UnAuthPageRedirect />,
+      },
     ],
   },
   {
@@ -27,11 +34,19 @@ const AppRoutes = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomePage />,
+        element: (
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "home",
-        element: <HomePage />,
+        element: (
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "online-users",
@@ -42,6 +57,17 @@ const AppRoutes = createBrowserRouter([
             element: <OnlineUserPopup />,
           },
         ],
+      },
+    ],
+  },
+
+  {
+    path: "*",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "*",
+        element: <Page404 />,
       },
     ],
   },

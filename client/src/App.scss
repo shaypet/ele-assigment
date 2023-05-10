@@ -18,10 +18,10 @@
   .flex-column {
     flex-direction: column;
   }
-  .flex-center {
+  .flex-center-valign {
     align-items: center;
   }
-  .flex-center-valign {
+  .flex-center {
     justify-content: center;
   }
   .error-row {
@@ -33,5 +33,11 @@
   }
   .text-center {
     text-align: center;
+  }
+  .flex-end-align {
+    justify-content: flex-end;
+  }
+  .spacer {
+    margin: auto;
   }
 }
