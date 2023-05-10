@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import StoreContext from "../../store/store";
 const HomePage = () => {
-  return <div>Home Page</div>;
+  const {
+    isAuth: [isAuth, setIsAuth],
+    user: [user, setUser],
+  } = useContext(StoreContext);
+
+  return <div>Home Page {user}</div>;
 };
 export default HomePage;
