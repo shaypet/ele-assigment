@@ -4,6 +4,7 @@ import AuthLayout from "../layouts/auth-layout/auth-layout";
 import RegisterPage from "../pages/auth/register";
 import LoginPage from "../pages/auth/login";
 import HomePage from "../pages/home/home";
+import OnlineUsers from "../pages/online-users/online-users";
 const AppRoutes = createBrowserRouter([
   {
     path: "/auth",
@@ -26,6 +27,14 @@ const AppRoutes = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
+      },
+      {
+        path: "home",
+        element: <HomePage />,
+      },
+      {
+        path: "online-users",
+        element: <OnlineUsers />,
       },
     ],
   },
