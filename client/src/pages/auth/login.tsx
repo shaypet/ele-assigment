@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./auth.scss";
 import AuthFormBox from "./components/auth-form-box/auth-form-box";
+import LoginForm from "./components/login-form/login-form";
 const LoginPage = () => {
   return (
     <div className="login-page">
@@ -19,7 +20,9 @@ const LoginPage = () => {
       </div>
       <div className="end-align-side padding flex flex-center flex-column">
         <div className="auth-title">Login</div>
-        <AuthFormBox>Hello</AuthFormBox>
+        <AuthFormBox>
+          <LoginForm />
+        </AuthFormBox>
       </div>
     </div>
   );
