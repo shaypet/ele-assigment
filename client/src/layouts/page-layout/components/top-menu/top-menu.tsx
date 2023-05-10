@@ -12,9 +12,7 @@ const TopMenu = () => {
       </div>
       <div className="spacer"></div>
       <div className="menu-item">
-        <a href="#" onClick={() => {}}>
-          Logout
-        </a>
+        <button onClick={() => {}}>Logout</button>
       </div>
     </div>
   );
