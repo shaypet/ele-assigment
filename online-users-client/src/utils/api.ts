@@ -1,8 +1,26 @@
-import axios from "axios";
-
+import axios, { AxiosError } from "axios";
+import AppRoutes from "../routes/routes";
+import { HttpStatusCode } from "axios";
 const ApiEndPoint = axios.create({
-  baseURL: process.env.API_ENDPOINT,
-  timeout: 1000,
+  baseURL: process.env.REACT_APP_API_ENDPOINT,
 });
+
+const onErrorResponse = (error: AxiosError): Promise<AxiosError> | void => {
+  switch (error.status) {
+    case HttpStatusCode.Unauthorized: {
+      AppRoutes.navigate("auth/unauth");
+      return;
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+
+  return Promise.reject(error);
+};
+ApiEndPoint.interceptors.response.use(function (response) {
+  return response;
+}, onErrorResponse);
 
 export default ApiEndPoint;
