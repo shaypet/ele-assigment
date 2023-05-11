@@ -23,7 +23,7 @@ export class AuthController {
     @Req() request: Request,
     @Body() LoginDto: LoginDto,
   ) {
-    await this.authService.login(LoginDto, request, response);
+    return this.authService.login(LoginDto, request, response);
   }
   @UseGuards(AuthGuard)
   @Get('logout')

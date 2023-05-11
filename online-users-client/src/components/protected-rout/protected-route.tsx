@@ -6,9 +6,8 @@ const ProtectedRoute = ({ children }: any) => {
   const {
     isAuth: [isAuth],
   } = useContext(StoreContext);
-  console.log("asd", isAuth);
   if (!isAuth) {
-    return <Navigate to="/unuth" />;
+    return <Navigate to="/auth/unauth" />;
   }
 
   return children;

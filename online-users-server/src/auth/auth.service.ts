@@ -23,7 +23,11 @@ export class AuthService {
     return this.usersService.create(RegisterDto);
   }
 
-  async login(loginDto: LoginDto, request: Request, response: Response) {
+  async login(
+    loginDto: LoginDto,
+    request: Request,
+    response: Response,
+  ): Promise<string> {
     const user: User = await this.usersService.getUserByEmail(loginDto.Email);
 
     if (!user)
@@ -41,6 +45,8 @@ export class AuthService {
     await user.save();
     await this.onlineUsersService.addOrUpdateEntry(user._id, request);
     await this.setAuthCookie(user, response);
+
+    return user.UserName;
   }
   async setAuthCookie(user: User, res: Response) {
     const accessToken = await this.jwtService.signAsync({
