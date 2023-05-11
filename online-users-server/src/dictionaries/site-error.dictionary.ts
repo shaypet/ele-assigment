@@ -12,4 +12,8 @@ export const SiteErrorDictionary = {
     Code: 102,
     Message: 'FILL ALL FIELDS',
   },
+  LOGIN_INFO_INCORRECT: {
+    Code: 103,
+    Message: 'LOGIN INFO INCORRECT',
+  },
 } satisfies Record<string, ISiteError>;

@@ -22,8 +22,8 @@ export class UsersService {
     )
       throw new SiteException(SiteErrorDictionary.REGISTER_Fill_ALL_FIELDS);
 
-    if (this.CheckIfEmailUnique(createUserDto.Email))
-      throw new SiteException(SiteErrorDictionary.EMAIL_EXISTS);
+    const checkEmail = await this.checkIfEmailUnique(createUserDto.Email);
+    if (checkEmail) throw new SiteException(SiteErrorDictionary.EMAIL_EXISTS);
 
     const newUser = new this.userModel(createUserDto);
 
@@ -32,14 +32,24 @@ export class UsersService {
     return null;
   }
 
-  async CheckIfEmailUnique(email: string): Promise<boolean> {
+  async getUserByEmail(email: string): Promise<User> {
     const user: User = await this.userModel.findOne({ Email: email }).exec();
+    return user;
+  }
+
+  async checkIfEmailUnique(email: string): Promise<boolean> {
+    const user: User = await this.getUserByEmail(email);
     if (user) return true;
     return false;
   }
 
-  async findUserById(id: Types.ObjectId): Promise<GetUserDto> {
+  async findUserById(id: Types.ObjectId): Promise<User> {
     const user: User = await this.userModel.findById(id).exec();
+    return user;
+  }
+  async getUserById(id: Types.ObjectId): Promise<GetUserDto> {
+    const user: User = await this.findUserById(id);
+    if (!user) return null;
     return {
       Id: user._id,
       UserName: user.UserName,
