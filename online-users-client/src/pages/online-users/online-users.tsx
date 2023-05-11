@@ -6,31 +6,28 @@ import OnlineUser from "./components/online-user";
 import OnlineUserPopup from "./components/online-user-popup/online-user-popup";
 import ApiEndPoint from "../../utils/api";
 
-const sampleValues: OnlineUserDTO[] = [
-  {
-    Id: "1",
-    UserName: "moshe",
-    IP: "1.1.1.1",
-    LastLogin: new Date(),
-    LastUpdateTime: new Date(),
-    LoginTime: new Date(),
-  },
-  {
-    Id: "2",
-    UserName: "shalom",
-    IP: "1.2.1.1",
-    LastLogin: new Date(),
-    LastUpdateTime: new Date(),
-    LoginTime: new Date(),
-  },
-];
 const OnlineUsers = () => {
-  const [onlineUserList, setOnlineUserList] =
-    useState<OnlineUserDTO[]>(sampleValues);
-  useEffect(() => {
-    ApiEndPoint.get("/asdads")
-      .then(() => console.log("AAAAAA"))
+  const [onlineUserList, setOnlineUserList] = useState<OnlineUserDTO[]>([]);
+  const [update, setUpdate] = useState<Date>();
+  const rate = Number(process.env.REACT_APP_REFRESH_RATE);
+  const updateList = () => {
+    ApiEndPoint.get("/online-users")
+      .then((res) => {
+        setUpdate(new Date());
+        setOnlineUserList(res.data.Data);
+      })
       .catch(() => {});
+  };
+  let t: any = null;
+  useEffect(() => {
+    t = setInterval(() => {
+      updateList();
+    }, rate);
+    updateList();
+
+    return () => {
+      clearInterval(t);
+    };
   }, []);
   return (
     <div className="online-users-page">
@@ -42,7 +39,7 @@ const OnlineUsers = () => {
           <div>
             Last Updated:
             <br />
-            {"asd"}
+            {update?.toISOString()}
           </div>
         </div>
         <table className="online-users-table" cellPadding={0} cellSpacing={0}>
@@ -57,7 +54,7 @@ const OnlineUsers = () => {
           </thead>
           <tbody>
             {onlineUserList.map((user) => (
-              <OnlineUser user={user} key={user.Id} />
+              <OnlineUser user={user} key={user.UserId} />
             ))}
           </tbody>
         </table>

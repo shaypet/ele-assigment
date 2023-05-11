@@ -8,12 +8,12 @@ const OnlineUser = ({ user }: OnlineUser) => {
   return (
     <tr>
       <td>
-        <Link to={user.Id}>{user.UserName}</Link>
+        <Link to={user.UserId}>{user.Username}</Link>
       </td>
-      <td className="text-center">{user.LoginTime.toDateString()}</td>
-      <td className="text-center">{user.LastUpdateTime.toDateString()}</td>
-      <td className="text-center">{user.LastLogin.toDateString()}</td>
-      <td className="text-center">{user.IP}</td>
+      <td className="text-center">{user.LoginTime}</td>
+      <td className="text-center">{user.LastUpdate}</td>
+      <td className="text-center">{user.LastLogin}</td>
+      <td className="text-center">{user.UserIP}</td>
     </tr>
   );
 };

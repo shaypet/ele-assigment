@@ -3,7 +3,7 @@ import AppRoutes from "../routes/routes";
 import { HttpStatusCode } from "axios";
 console.log();
 const ApiEndPoint = axios.create({
-  baseURL: process.env.REACT_APP_API_ENDPOINT,
+  baseURL: "/api",
   withCredentials: true,
 });
 

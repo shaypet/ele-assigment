@@ -6,6 +6,6 @@ const HomePage = () => {
     user: [user, setUser],
   } = useContext(StoreContext);
 
-  return <div className="home">Home Page {user}</div>;
+  return <div className="home">Welcome Page {user}</div>;
 };
 export default HomePage;
