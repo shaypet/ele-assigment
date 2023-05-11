@@ -1,12 +1,15 @@
-import { Controller, Res, UseGuards } from '@nestjs/common';
+import { Controller, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Get, Post, Body } from '@nestjs/common';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { UserId } from 'src/decorators/user-id.decorator';
+import { Types } from 'mongoose';
+import { IUserId } from 'src/interfaces/user-id.interface';
 
 @Controller('auth')
 export class AuthController {
@@ -20,13 +23,17 @@ export class AuthController {
   @Post('login')
   async login(
     @Res({ passthrough: true }) response: Response,
+    @Req() request: Request,
     @Body() LoginDto: LoginDto,
   ) {
-    await this.authService.login(LoginDto, response);
+    await this.authService.login(LoginDto, request, response);
   }
   @UseGuards(AuthGuard)
   @Get('logout')
-  logout(@Res({ passthrough: true }) response: Response) {
-    return this.authService.logout(response);
+  logout(
+    @UserId() userId: IUserId,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    return this.authService.logout(userId, response);
   }
 }

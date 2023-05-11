@@ -5,14 +5,17 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/schemas/user.schema';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { SiteException } from 'src/exception/site.exception';
 import { SiteErrorDictionary } from 'src/dictionaries/site-error.dictionary';
 import * as bcrypt from 'bcrypt';
+import { OnlineUsersService } from 'src/online-users/online-users.service';
+import { IUserId } from 'src/interfaces/user-id.interface';
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
+    private readonly onlineUsersService: OnlineUsersService,
     private jwtService: JwtService,
   ) {}
 
@@ -20,7 +23,7 @@ export class AuthService {
     return this.usersService.create(RegisterDto);
   }
 
-  async login(loginDto: LoginDto, response: Response) {
+  async login(loginDto: LoginDto, request: Request, response: Response) {
     const user: User = await this.usersService.getUserByEmail(loginDto.Email);
 
     if (!user)
@@ -30,7 +33,13 @@ export class AuthService {
 
     if (!isMatch)
       throw new SiteException(SiteErrorDictionary.LOGIN_INFO_INCORRECT);
+    user.LoginCount++;
 
+    user.LastLogin = user.LoginTime;
+    user.LoginTime = new Date();
+
+    await user.save();
+    await this.onlineUsersService.addOrUpdateEntry(user._id, request);
     await this.setAuthCookie(user, response);
   }
   async setAuthCookie(user: User, res: Response) {
@@ -43,7 +52,8 @@ export class AuthService {
       httpOnly: true,
     });
   }
-  logout(response: Response) {
+  async logout(userId: IUserId, response: Response) {
+    await this.onlineUsersService.removeEntry(userId);
     response.clearCookie('accessToken');
   }
 }

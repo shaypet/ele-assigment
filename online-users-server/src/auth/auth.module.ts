@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UsersService } from 'src/users/users.service';
 import { UsersModule } from 'src/users/users.module';
+import { OnlineUsersModule } from 'src/online-users/online-users.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UsersModule } from 'src/users/users.module';
       }),
     }),
     UsersModule,
+    OnlineUsersModule,
   ],
   controllers: [AuthController],
   providers: [AuthService],

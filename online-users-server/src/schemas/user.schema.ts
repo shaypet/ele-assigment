@@ -15,7 +15,13 @@ export class User extends Document<Types.ObjectId> {
   Email: string;
 
   @Prop({ default: null })
+  LoginTime: Date;
+
+  @Prop({ default: null })
   LastLogin: Date;
+
+  @Prop({ default: () => new Date() })
+  RegisterTime: Date;
 
   @Prop({ default: 0 })
   LoginCount: number;
@@ -24,6 +30,7 @@ export class User extends Document<Types.ObjectId> {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.pre('save', async function (next) {
+  if (!this.isModified('Password')) return next();
   try {
     const salt = await bcrypt.genSalt(10);
     this.Password = await bcrypt.hash(this.Password, salt);
