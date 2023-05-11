@@ -1,0 +1,19 @@
+{
+  "name": "elementor-assigment-1",
+  "version": "1.0.0",
+  "description": "Check Out the .env.example for each folder for dev purpose i added the \"src/setupProxy.js\" in the client project. its directed to the server port because of CORS issues",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build --prefix online-users-client && npm run build --prefix online-users-server && npm start --prefix online-users-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaypet/ele-assigment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaypet/ele-assigment/issues"
+  },
+  "homepage": "https://github.com/shaypet/ele-assigment#readme"
+}
