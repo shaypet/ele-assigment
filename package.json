@@ -4,6 +4,8 @@
   "description": "Check Out the .env.example for each folder for dev purpose i added the \"src/setupProxy.js\" in the client project. its directed to the server port because of CORS issues",
   "main": "index.js",
   "scripts": {
+    "install-app": "npm install --prefix online-users-client && npm install --prefix online-users-server",
+    "start-and-install": "npm install --prefix online-users-client && npm run build --prefix online-users-client && npm install --prefix online-users-server &&npm run build --prefix online-users-server && npm start --prefix online-users-server",
     "start": "npm run build --prefix online-users-client && npm run build --prefix online-users-server && npm start --prefix online-users-server"
   },
   "repository": {
