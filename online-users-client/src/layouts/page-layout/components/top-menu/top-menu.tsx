@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./top-menu.scss";
 import ApiEndPoint from "../../../../utils/api";
 import { ServerResponse } from "../../../../dto/server-response.dto";
+import StoreContext from "../../../../store/store";
 const TopMenu = () => {
   const navigate = useNavigate();
+  const {
+    isAuth: [isAuth, setIsAuth],
+    user: [user, setUser],
+  } = useContext(StoreContext);
   const doLogout = async () => {
     const response = await ApiEndPoint.get<ServerResponse<any>>("auth/logout");
+    setIsAuth(false);
     navigate("auth/login");
   };
   return (

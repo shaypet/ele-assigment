@@ -15,20 +15,24 @@ function App() {
     user: [user, setUser],
   };
   const rate = Number(process.env.REACT_APP_REFRESH_RATE);
+
   const updateList = () => {
     ApiEndPoint.get("/online-users/update")
-      .then((res) => {})
+      .then((res: any) => {})
       .catch(() => {});
   };
-  let t: any = null;
+
+  let intervalId: any = null;
+
   useEffect(() => {
+    console.log(isAuth);
     if (isAuth)
-      t = setInterval(() => {
+      intervalId = setInterval(() => {
         updateList();
       }, rate);
-    else if (t) clearInterval(t);
+    else if (intervalId) clearInterval(intervalId);
     return () => {
-      if (t) clearInterval(t);
+      if (intervalId) clearInterval(intervalId);
     };
   }, [isAuth]);
   return (

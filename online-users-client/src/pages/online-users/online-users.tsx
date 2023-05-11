@@ -12,21 +12,21 @@ const OnlineUsers = () => {
   const rate = Number(process.env.REACT_APP_REFRESH_RATE);
   const updateList = () => {
     ApiEndPoint.get("/online-users")
-      .then((res) => {
+      .then((res: any) => {
         setUpdate(new Date());
         setOnlineUserList(res.data.Data);
       })
       .catch(() => {});
   };
-  let t: any = null;
+  let intervalId: any = null;
   useEffect(() => {
-    t = setInterval(() => {
+    intervalId = setInterval(() => {
       updateList();
     }, rate);
     updateList();
 
     return () => {
-      clearInterval(t);
+      clearInterval(intervalId);
     };
   }, []);
   return (
