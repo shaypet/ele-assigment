@@ -8,7 +8,7 @@ import { Store } from "./types/store.type";
 import ApiEndPoint from "./utils/api";
 function App() {
   const [isAuth, setIsAuth] = useState<boolean>(false);
-  const [user, setUser] = useState<string>("moshe");
+  const [user, setUser] = useState<string>("");
 
   const store: Store = {
     isAuth: [isAuth, setIsAuth],
