@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./online-users.scss";
 import { OnlineUserDTO } from "../../dto/online-user.dto";
 import OnlineUser from "./components/online-user";
 import OnlineUserPopup from "./components/online-user-popup/online-user-popup";
+import ApiEndPoint from "../../utils/api";
 
 const sampleValues: OnlineUserDTO[] = [
   {
@@ -26,7 +27,11 @@ const sampleValues: OnlineUserDTO[] = [
 const OnlineUsers = () => {
   const [onlineUserList, setOnlineUserList] =
     useState<OnlineUserDTO[]>(sampleValues);
-
+  useEffect(() => {
+    ApiEndPoint.get("/asdads")
+      .then(() => console.log("AAAAAA"))
+      .catch(() => {});
+  }, []);
   return (
     <div className="online-users-page">
       <Outlet />
